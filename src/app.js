@@ -17,6 +17,9 @@ window.onload = function() {
     },
     {
       noun: ["jogger", "racoon"]
+    },
+    {
+      dom: [".com", ".net", ".es", ".edu", ".org"]
     }
   ];
 
@@ -25,9 +28,11 @@ window.onload = function() {
   for (let pronoun of domains[0].pronoun) {
     for (let adj of domains[1].adj) {
       for (let noun of domains[2].noun) {
-        domainHTML += `<li class="list-group-item">
-            ${pronoun}${adj}${noun}.com
+        for (let dom of domains[3].dom) {
+          domainHTML += `<li class="list-group-item">
+            ${pronoun}${adj}${noun}${dom}
           </li>`;
+        }
       }
     }
   }
