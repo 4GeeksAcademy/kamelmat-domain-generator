@@ -10,13 +10,13 @@ window.onload = function() {
 
   const domains = [
     {
-      pronoun: ["the", "our"]
+      pronoun: ["the", "our", "tu"]
     },
     {
-      adj: ["great", "big"]
+      adj: ["great", "big", "también"]
     },
     {
-      noun: ["jogger", "racoon"]
+      noun: ["jogger", "racoon", "puedes"]
     },
     {
       dom: [".com", ".net", ".es", ".edu", ".org"]
@@ -29,13 +29,19 @@ window.onload = function() {
     for (let adj of domains[1].adj) {
       for (let noun of domains[2].noun) {
         for (let dom of domains[3].dom) {
-          domainHTML += `<li class="list-group-item">
-            ${pronoun}${adj}${noun}${dom}
-          </li>`;
+          let domain;
+          if (dom === ".es" && noun === "puedes") {
+            domain = `${pronoun}${adj}pued${dom}`;
+          } else {
+            domain = `${pronoun}${adj}${noun}${dom}`;
+          }
+          domainHTML += `<li class="list-group-item">${domain}</li>`;
         }
       }
     }
   }
+
+  domainHTML += "</ul>";
 
   const dominios = document.querySelector("#domains");
   dominios.innerHTML = domainHTML;
